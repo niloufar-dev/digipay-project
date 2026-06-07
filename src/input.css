@@ -4,8 +4,54 @@
     src: url(./icons/icons.woff2);
 }
 .icon {
-  font-family: 'icon';
+  font-family: 'icon' !important;
   font-style: normal;
   font-weight: normal;
-  display: inline-block;
+  display: flex;
+  width: fit-content;
 }
+@font-face {
+    font-family: yekan;
+    src: url(./font/yekan-bakh_variable.woff) format("woff");
+}
+body{
+    font-family:"yekan";
+}
+@layer utilities {
+    .row{
+        @apply w-full flex flex-wrap
+    }
+}
+.icon-hamburger-menu-linear::before{
+content: "\f2b0";
+}
+.icon-arrow-2-down-linear::before{
+    content: "\f11c";
+ }
+ .icon-close-linear::before{
+    content: "\f1ef";
+ }
+.icon-car-linear::before{
+    content: "\f1b1";
+}
+.icon-digital-device-linear::before{
+    content: "\f224";
+}
+ .icon-credit-linear::before{
+    content: "\f20d";
+ }
+ .icon-bnpl-linear::before{
+    content:"\f178" ;
+ }
+ .icon-digital-device-linear::before{
+    content: "\f224";
+ }
+ .icon-bag-linear::before{
+    content: "\f142";
+ }
+ .icon-bank-linear::before{
+    content: "\f168";
+ }
+ .icon-cash-out-linear::before{
+    content: "\f1c1";
+ }
