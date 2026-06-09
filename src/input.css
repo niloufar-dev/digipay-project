@@ -17,10 +17,26 @@
 body{
     font-family:"yekan";
 }
+.swiper-pagination-bullet-active {
+  background-color: rgb(77, 66, 66) ;
+}
 @layer utilities {
     .row{
         @apply w-full flex flex-wrap
     }
+}
+@layer components{
+   .swipper-slide{
+      @apply rounded-3xl overflow-hidden *:w-full h-full object-cover
+   }
+   .category{
+      @apply w-22 lg:w-32  shrink-0  flex flex-col gap-2 items-center *:nth-[1]:w-[80px] lg:*:nth-[1]:w-[110px] *:nth-[1]:h-[80px] lg:*:nth-[1]:h-[110px]  *:nth-[1]:object-cover *:nth-[2]:text-[11px]  *:nth-[2]:whitespace-nowrap *:nth-[1]:bg-white *:nth-[1]:rounded-full 
+   }
+}
+.swiper-button-next::after,
+.swiper-button-prev::after {
+    font-size: 20px;
+    color: #8d8e8f;
 }
 .icon-hamburger-menu-linear::before{
 content: "\f2b0";
@@ -55,3 +71,21 @@ content: "\f2b0";
  .icon-cash-out-linear::before{
     content: "\f1c1";
  }
+ .icon-search-linear::before{
+    content: "\f3f3";
+ }
+ .icon-home-bold::before{
+    content: "\f2cd";
+ }
+ .icon-more-bold::before{
+    content: "\f347";
+ }
+ .icon-bag-bold::before{
+    content: "\f13f";
+ }
+.icon-discount-bold::before{
+    content: "\f225";
+}
+.icon-wallet-bold::before{
+    content: "\f497";
+}
