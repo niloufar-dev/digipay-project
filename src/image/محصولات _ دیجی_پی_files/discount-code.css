@@ -1,0 +1,285 @@
+:root {
+  --shimmer-first-color: #CED2DA;
+  --shimmer-second-color: #F1F3F7;
+  --shimmer-third-color: #CED2DA;
+}
+:root .inverted {
+  --shimmer-first-color: #191C23;
+  --shimmer-second-color: #444851;
+  --shimmer-third-color: #191C23;
+}
+:root .dark {
+  --shimmer-first-color: #191C23;
+  --shimmer-second-color: #444851;
+  --shimmer-third-color: #191C23;
+}
+:root .dark .inverted {
+  --shimmer-first-color: #CED2DA;
+  --shimmer-second-color: #F1F3F7;
+  --shimmer-third-color: #CED2DA;
+}
+
+:root {
+  --base-font-feature-settings: 'ss01' on, 'liga' off, 'clig' off;
+}
+
+.many-vouchers .discount-code-wrapper {
+  width: 292.5px;
+}
+
+.few-vouchers .discount-code-wrapper {
+  width: 320px;
+}
+
+.discount-code-wrapper {
+  position: relative;
+  justify-content: space-between;
+  height: 87px;
+  border-radius: 16px !important;
+}
+.discount-code-wrapper .content {
+  height: 100%;
+  z-index: 2;
+  padding: 16px;
+  position: relative;
+  margin-right: 0 !important;
+  overflow: hidden;
+}
+.discount-code-wrapper .logo-wrapper .logo {
+  width: 56px;
+  height: 56px;
+}
+.discount-code-wrapper .image {
+  width: 112px;
+  height: 112px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+}
+.discount-code-wrapper .ellipse {
+  position: absolute;
+  width: 100%;
+  height: auto;
+  z-index: 1;
+  top: 0;
+}
+.discount-code-wrapper .ellipse img {
+  width: 100%;
+  height: 100%;
+}
+
+.discount-code-wrapper.expand {
+  overflow: hidden;
+}
+.discount-code-wrapper.expand::before {
+  content: "";
+  position: absolute;
+  z-index: 3;
+  width: 16px;
+  height: 16px;
+  background-color: #F2F3F6;
+  transform: rotate(45deg);
+  border-radius: 4px;
+  left: 28%;
+  top: -8px;
+}
+.discount-code-wrapper.expand::after {
+  content: "";
+  position: absolute;
+  z-index: 3;
+  width: 16px;
+  height: 16px;
+  background-color: #F2F3F6;
+  transform: rotate(45deg);
+  border-radius: 4px;
+  left: 28%;
+  bottom: -8px;
+}
+.discount-code-wrapper.expand .logo-wrapper .logo.onelevated-shade-99 {
+  border: 6px solid #FFF;
+}
+.discount-code-wrapper.expand .logo-wrapper .logo.surface-elevated {
+  border: 6px solid #F2F3F6;
+}
+.discount-code-wrapper.expand .ellipse {
+  left: -60px;
+}
+.discount-code-wrapper.expand.onelevated-shade-99::before {
+  content: "";
+  position: absolute;
+  z-index: 3;
+  width: 16px;
+  height: 16px;
+  background-color: #FFF;
+  transform: rotate(45deg);
+  border-radius: 4px;
+  left: 28%;
+  top: -8px;
+}
+.discount-code-wrapper.expand.onelevated-shade-99::after {
+  content: "";
+  position: absolute;
+  z-index: 3;
+  width: 16px;
+  height: 16px;
+  background-color: #FFF;
+  transform: rotate(45deg);
+  border-radius: 4px;
+  left: 28%;
+  bottom: -8px;
+}
+
+.discount-code-wrapper.expand .dashed-vertical {
+  position: absolute;
+  top: 20%;
+  left: 31%;
+  width: 2px;
+  height: 55px;
+  transform: translateX(-50%);
+  z-index: 2;
+  background: repeating-linear-gradient(to top, #DFE1E5, #DFE1E5 6px, transparent 7px, transparent 10px);
+}
+
+.discount-code-wrapper.compact {
+  width: 154px;
+  height: 160px;
+  border-radius: 16px !important;
+}
+.discount-code-wrapper.compact::before {
+  content: "";
+  position: absolute;
+  z-index: 3;
+  width: 16px;
+  height: 16px;
+  background-color: #F2F3F6;
+  transform: rotate(45deg);
+  border-radius: 4px;
+  top: 58%;
+  left: -8px;
+}
+.discount-code-wrapper.compact::after {
+  content: "";
+  position: absolute;
+  z-index: 3;
+  width: 16px;
+  height: 16px;
+  background-color: #F2F3F6;
+  transform: rotate(45deg);
+  border-radius: 4px;
+  top: 58%;
+  right: -8px;
+}
+.discount-code-wrapper.compact .content {
+  z-index: 2;
+  position: relative;
+  align-items: center;
+  height: 100%;
+  padding: 8px 12px !important;
+  justify-content: end;
+}
+.discount-code-wrapper.compact .voucher-code {
+  border-radius: 70px;
+  border: 1px solid #FFF;
+  background: var(--Surfaces-Status-Brand-Tint, #DEEDFF);
+  display: flex;
+  padding: 4px 2px 4px 10px;
+  justify-content: space-between;
+  align-items: center;
+  height: 40px;
+  width: 100%;
+}
+.discount-code-wrapper.compact .voucher-code .info {
+  background: #fff;
+  border-radius: 50px;
+  width: 34px;
+  height: 34px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9;
+}
+.discount-code-wrapper.compact .logo-image-wrapper {
+  position: absolute;
+  z-index: 4;
+  border-radius: 100px !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  top: -30px;
+  left: 30%;
+}
+.discount-code-wrapper.compact .logo-image-wrapper .logo-wrapper {
+  width: 50px;
+  height: 50px;
+  overflow: hidden;
+}
+.discount-code-wrapper.compact .logo-image-wrapper .logo-wrapper img {
+  border-radius: 50%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.discount-code-wrapper.compact .dashed-line {
+  width: 80%;
+  height: 2px;
+  margin: 0 auto 10px;
+  background: repeating-linear-gradient(to right, #DFE1E5, #DFE1E5 6px, transparent 6px, transparent 12px);
+}
+.discount-code-wrapper.compact.onelevated-shade-99::before {
+  content: "";
+  position: absolute;
+  z-index: 3;
+  width: 16px;
+  height: 16px;
+  background-color: #FFF;
+  transform: rotate(45deg);
+  border-radius: 4px;
+  top: 58%;
+  left: -8px;
+}
+.discount-code-wrapper.compact.onelevated-shade-99::after {
+  content: "";
+  position: absolute;
+  z-index: 3;
+  width: 16px;
+  height: 16px;
+  background-color: #FFF;
+  transform: rotate(45deg);
+  border-radius: 4px;
+  top: 58%;
+  right: -8px;
+}
+.discount-code-wrapper.compact.onelevated-shade-99 .voucher-code {
+  border: 1px solid #DFE1E5;
+}
+
+.ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis !important;
+  min-width: 0;
+}
+
+.tooltip {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  border-radius: 4px;
+  padding: 5px 10px;
+  font-size: 12px;
+  transition: opacity 0.3s, visibility 0.3s;
+  z-index: 1;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
+
+.copyIcon {
+  position: relative;
+}

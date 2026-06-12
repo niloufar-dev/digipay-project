@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<!-- saved from url=(0045)https://cdn-iframe.digiwiseid.com/iframe.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <body>
+    <script>
+      let parentHostname = null;
+
+      async function sendDwidRequest() {
+        try {
+          const response = await fetch('https://api-dwid.digiwiseid.com/api/v1/dwid?source=IFRAME', {
+            method: 'GET',
+            credentials: 'include',
+            headers: {
+              'Dwid-Origin': parentHostname || 'unknown',
+            }
+          });
+          if (response.ok) {
+            const data = await response.json();
+            if (data && data.dwid) {
+              window.parent.postMessage({ type: 'DWID_RECEIVED', dwid: data.dwid }, '*');
+            }
+          }
+        } catch (error) {
+        }
+      }
+      window.addEventListener('message', function(event) {
+        if (event.data && event.data.type === 'SET_PARENT_HOST') {
+          parentHostname = event.data.hostname;
+        } else if (event.data && event.data.type === 'INIT_DWID_REQUEST') {
+          sendDwidRequest();
+        }
+      });
+    </script>
+  
+</body></html>

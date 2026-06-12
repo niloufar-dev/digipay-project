@@ -20,17 +20,41 @@ body{
 .swiper-pagination-bullet-active {
   background-color: rgb(77, 66, 66) ;
 }
+.grad{
+  background-image: linear-gradient(to right top, #191152, #12154d, #0d1848, #0b1a42, #0d1b3b, #0c1c38, #0e1d34, #101e30, #11202e, #13212c, #172229, #1b2327);
+}
+.hide{
+    display: none;
+}
+
 @layer utilities {
     .row{
         @apply w-full flex flex-wrap
     }
 }
 @layer components{
-   .swipper-slide{
-      @apply rounded-3xl overflow-hidden *:w-full h-full object-cover
+   .swiper-slide{
+      @apply rounded-3xl overflow-hidden *:w-full h-full object-cover;
    }
    .category{
-      @apply w-22 lg:w-32  shrink-0  flex flex-col gap-2 items-center *:nth-[1]:w-[80px] lg:*:nth-[1]:w-[110px] *:nth-[1]:h-[80px] lg:*:nth-[1]:h-[110px]  *:nth-[1]:object-cover *:nth-[2]:text-[11px]  *:nth-[2]:whitespace-nowrap *:nth-[1]:bg-white *:nth-[1]:rounded-full 
+      @apply w-22 lg:w-32  shrink-0  flex flex-col gap-2 items-center *:nth-[1]:w-[80px] lg:*:nth-[1]:w-[110px] *:nth-[1]:h-[80px] lg:*:nth-[1]:h-[110px]  *:nth-[1]:object-cover *:nth-[2]:text-[11px]  *:nth-[2]:whitespace-nowrap *:nth-[1]:bg-white *:nth-[1]:rounded-full; 
+   }
+   .card-off{
+      @apply w-48 shadow-2xl h-[310px] rounded-4xl overflow-hidden bg-[#eaebed] shrink-0 cursor-pointer hover:scale-90 duration-500
+   
+   }
+   .filmcard{
+      @apply cursor-pointer w-48 shadow-2xl shrink-0 h-[280px] relative  rounded-3xl overflow-hidden  *:nth-[1]:absolute *:nth-[1]:w-full *:nth-[1]:object-cover *:nth-[1]:h-full *:nth-[2]:flex  *:nth-[2]:absolute *:nth-[1]:top-0 *:nth-[1]:right-0 *:nth-[1]:z-0 *:nth-[2]:z-5   *:nth-[2]:w-full *:nth-[2]:h-1/6 *:nth-[2]:*:nth-[1]:w-7
+      *:nth-[2]:*:nth-[1]:h-7 *:nth-[2]:*:nth-[1]:rounded-full *:nth-[2]:top-0 *:nth-[2]:pr-3  *:nth-[1]:group-hover:scale-110 *:nth-[1]:duration-500
+   }
+   .part1{
+      @apply w-full flex justify-between items-center mt-5 mb-5 *:nth-[2]:bg-gray-200 *:nth-[2]:*:text-black *:nth-[2]:p-3 *:nth-[2]:rounded-full *:nth-[2]:w-9 *:nth-[2]:h-9 *:nth-[2]:flex *:nth-[2]:items-center *:nth-[2]:justify-center *:nth-[2]:*:text-[22px] 
+   }
+   .ic1{
+      @apply  flex gap-3 *:nth-[1]:bg-[#f2f3f6] *:nth-[1]:px-3 *:nth-[1]:rounded-[12px] *:nth-[1]:flex *:nth-[1]:items-center *:nth-[1]:*:text-[32px] *:nth-[1]:*:text-[#d2bcf7] *:nth-[2]:*:nth-[1]:text-black *:nth-[2]:*:nth-[1]:text-[14px] *:nth-[2]:*:nth-[2]:text-[12px] *:nth-[1]:bg-[linear-gradient(221deg,#8643F3_4.59%,#431F7E_92.92%)] *:nth-[2]:*:nth-[2]:py-1
+   }
+   .p2{
+      @apply flex flex-col  items-center  *:nth-[1]:text-[#414cab] *:nth-[1]:text-6xl *:nth-[1]:bg-white xl:*:nth-[1]:bg-[#eaebedba] *:nth-[1]:p-4 *:nth-[1]:rounded-2xl *:nth-[1]:shadow-xl xl:*:nth-[1]:shadow-none *:nth-[2]:text-[13px] *:nth-[2]:mt-2
    }
 }
 .swiper-button-next::after,
@@ -40,6 +64,7 @@ body{
 }
 .icon-hamburger-menu-linear::before{
 content: "\f2b0";
+
 }
 .icon-arrow-2-down-linear::before{
     content: "\f11c";
@@ -88,4 +113,44 @@ content: "\f2b0";
 }
 .icon-wallet-bold::before{
     content: "\f497";
+}
+.icon-store-linear::before{
+   content: "\f432";
+}
+.icon-gold-bag-bold::before{
+   content: "\f29a";
+}
+.icon-arrow-left-linear::before{
+   content: "\f12f";
+}
+.icon-wallet-in-bold::before{
+   content: "\f49e";
+}
+.icon-card-to-card-bold::before{
+   content: "\f1b6";
+}
+.icon-digital-device-bold::before{
+   content: "\f221";
+}
+.icon-car-bold::before{
+   content: "\f1ac";
+}
+.icon-insurance-bold::before{
+   content: "\f2ed";
+}
+.icon-car-crash-bold::before{
+   content: "\f1ad";
+}
+.icon-charity-2-bold::before{
+   content: "\f1c3";
+}
+.icon-network-bold::before{
+   content: "\f35b";
+}
+.icon-simcard-bold::before{
+   content: "\f410";
+}
+.service-card{
+    position:relative;
+    overflow:hidden;
 }

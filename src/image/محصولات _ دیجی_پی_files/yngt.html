@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<!-- saved from url=(0087)https://cdn.yektanet.com/assets/iframe/yngt.html?fp=01K605TFXVW14JPQZV0CVSJZBT&report=0 -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		
+		<title>truv</title>
+	</head>
+	<body>
+
+	<script>
+		(function () {
+			var key = "_yngt";
+			var analyticsKey = "analytics_global_token";
+			var gearboxKey = "gearbox_ad_token";
+
+			var alerts = [];
+			var reportSent = false;
+
+			function collectAlert(key, value = "") {
+				alerts.push({
+					source: "iframe",
+					metric_name: key,
+					metric_label: value,
+				});
+			}
+			collectAlert("initiate");
+
+			function isReportEnabled() {
+				return /[&?]report=1/.test(location.search);
+			}
+
+			function sendReport() {
+				if (!isReportEnabled() || reportSent || alerts.length === 0) return;
+				reportSent = true;
+				var url = "https://event.yektanet.com/api/script-metric/v1/collect";
+				var body = JSON.stringify(alerts);
+				if (navigator.sendBeacon) {
+					navigator.sendBeacon(
+						url,
+						new Blob([body], { type: "application/json" })
+					);
+				} else {
+					var xhr = new XMLHttpRequest();
+					xhr.open("POST", url, true);
+					xhr.setRequestHeader("Content-Type", "application/json");
+					xhr.send(body);
+				}
+			}
+
+			document.addEventListener("visibilitychange", function () {
+				if (document.visibilityState === "hidden") sendReport();
+			});
+			window.addEventListener("pagehide", sendReport);
+
+			function checkLocalStorage() {
+				// rtype: uid | undefined
+				try {
+					return localStorage.getItem(key);
+				} catch (e) {
+					return undefined;
+				}
+			}
+
+			function saveInLocalStorage(key, token) {
+				try {
+					localStorage.setItem(key, token);
+				} catch (e) {}
+			}
+
+			function checkCookie(rKey) {
+				try {
+					var token = document.cookie.match(rKey);
+
+					if (token) {
+						return token[1];
+					}
+				} catch (e) {
+					return undefined;
+				}
+			}
+
+			function checkFirstPartyToken() {
+				var qs = /[&?]fp=([^&]+)/.exec(location.search);
+				var firstPartyToken = qs && qs[1];
+				return firstPartyToken;
+			}
+
+			function saveInCookie(key, token) {
+				try {
+					var now = new Date();
+					now.setTime(now.getTime() + 30 * 24 * 60 * 60 * 1000);
+					var thirty_days_from_now = now.toUTCString();
+					document.cookie = ""
+						.concat(key, "=")
+						.concat(token, "; expires=")
+						.concat(
+							thirty_days_from_now,
+							"; domain=.yektanet.com; path=/; samesite=None; Secure"
+						);
+				} catch (e) {}
+			}
+
+			function updateGlobalToken(token) {
+				if (token) {
+					var keys = [key, gearboxKey, analyticsKey];
+					keys.forEach((k) => saveInCookie(k, token));
+					if (!checkCookie(/_yngt=([\w\-]+)/)) {
+						collectAlert("script_cookie_empty");
+					}
+					saveInLocalStorage(key, token);
+
+					try {
+						collectAlert("script_messaging");
+						parent.postMessage({ cookie: token }, "*");
+					} catch (e) {}
+				}
+			}
+			function resolveUID() {
+				var fpToken = checkFirstPartyToken();
+
+				var sources = [
+					{ label: "yngt", fn: () => checkCookie(/_yngt=([\w\-]+)/) },
+					{ label: "local_storage", fn: () => checkLocalStorage() },
+					{ label: "first_party", fn: () => checkFirstPartyToken() },
+					{
+						label: "analytics_cookie",
+						fn: () => checkCookie(/analytics_global_token=([\w\-]+)/),
+					},
+					{
+						label: "gearbox_cookie",
+						fn: () => checkCookie(/gearbox_ad_token=([\w\-]+)/),
+					},
+				];
+
+				var resolved = sources
+					.map(function (s) {
+						return { label: s.label, value: s.fn() };
+					})
+					.find(function (s) {
+						return (
+							s.value != null && s.value !== "null" && s.value !== "undefined"
+						);
+					});
+
+				if (resolved) {
+					collectAlert("uid_resolver_outcome", resolved.label);
+					updateGlobalToken(resolved.value);
+					if (resolved.value !== fpToken) {
+						collectAlert("uid_cookie_diff");
+					}
+				} else {
+					var xhr = new XMLHttpRequest();
+					var url = "https://event.yektanet.com/api/get-uid";
+					xhr.open("GET", url, true);
+					xhr.withCredentials = true;
+					xhr.send();
+
+					xhr.onload = function () {
+						if (xhr.status === 200) {
+							var resp = JSON.parse(xhr.responseText);
+							const uid = resp["uid"];
+							collectAlert("uid_resolver_outcome", "api");
+							updateGlobalToken(uid);
+						} else {
+							collectAlert("uid_resolver_outcome", "api_error");
+						}
+					};
+
+					xhr.onerror = function () {
+						collectAlert("uid_resolver_outcome", "network_error");
+						console.error("Network Error in setting .yektanet token");
+					};
+				}
+			}
+			// Try storage access first, fall back to existing logic
+			if (document.requestStorageAccess) {
+				document
+					.requestStorageAccess()
+					.then(function () {
+						resolveUID();
+					}) // cookies now readable
+					.catch(function () {
+						resolveUID();
+					}); // cookies still blocked, use fp fallback
+			} else {
+				resolveUID();
+			}
+		})();
+	</script>
+
+</body></html>

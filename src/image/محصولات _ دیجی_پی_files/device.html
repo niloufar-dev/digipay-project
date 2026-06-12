@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<!-- saved from url=(0062)https://static1.intrack.ir/api/web/download/sdk/v1/device.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>deviceid_sharing</title>
+</head>
+
+<body>
+    <script>
+        function generateUUID() {
+            if(checkLocalStorage()){
+                var oldDevId = window.localStorage.getItem("intk_sdk_device_id")
+                if(oldDevId){
+                    return oldDevId
+                }
+            }
+            var d = new Date().getTime()
+            var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+                var r = (d + Math.random() * 16) % 16 | 0
+                d = Math.floor(d / 16)
+                return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16)
+            })
+            return uuid
+        }
+
+        function isObject(obj) { return obj.constructor.toString().indexOf("Object") > -1 }
+        function checkCookie() {
+
+            var cookieEnabled = navigator.cookieEnabled;
+            if (!cookieEnabled) {
+                document.cookie = "intk_device_id_test";
+                cookieEnabled = document.cookie.indexOf("intk_device_id_test") != -1;
+            }
+            return cookieEnabled;
+        }
+        function cookieRead(cookieKey) {
+            var nameEQ = cookieKey + '='
+            var ca = document.cookie.split(';')
+            for (var i = 0, max = ca.length; i < max; i++) {
+                var c = ca[i]
+                while (c.charAt(0) === ' ') {
+                    c = c.substring(1, c.length)
+                }
+                if (c.indexOf(nameEQ) === 0) {
+                    return c.substring(nameEQ.length, c.length)
+                }
+            }
+            return null
+        }
+        function cookieCreate(cookieKey, cookieVal, exp) {
+            var date = new Date();
+            date.setTime(date.getTime() + (exp * 24 * 60 * 60 * 1000));
+            var expires = "; expires=" + date.toGMTString();
+            document.cookie = cookieKey + "=" + cookieVal + expires + "; domain=.intrack.ir; Secure; SameSite=None; path=/";
+        }
+
+        function checkLocalStorage(){
+            var test = 'intk_device_id_test'
+            try {
+                window.localStorage.setItem(test, test)
+                window.localStorage.removeItem(test)
+                return true
+            } catch (e) {
+                return false
+            }
+        }
+
+        window.addEventListener("message", (event) => {
+            if (isObject(event.data) && "deviceId" in event.data && event.data.source === "intk") {
+                if (checkCookie()) {
+                    var deviceId = cookieRead("device_id")
+                    if (!deviceId) {
+                        deviceId = event.data.deviceId || generateUUID();
+                    }
+                    cookieCreate("device_id", deviceId, 400);
+
+                    if(checkLocalStorage()){
+                        window.localStorage.setItem("intk_sdk_device_id", deviceId)
+                    }
+
+                    parent.postMessage({ deviceId: deviceId, source: "intk" }, "*")
+                } else {
+                    var deviceId = event.data.deviceId || generateUUID();
+                    if (checkLocalStorage()) {
+                        window.localStorage.setItem("intk_sdk_device_id", deviceId)
+                    }
+                    parent.postMessage({ deviceId: deviceId, source: "intk" }, "*")
+                }
+
+                setTimeout(function () {
+                    parent.postMessage("intkDeviceSet", "*");
+                }, 500)
+            }
+
+        }, false);
+    </script>
+
+
+
+</body></html>

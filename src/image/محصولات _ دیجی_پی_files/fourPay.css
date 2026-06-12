@@ -1,0 +1,54 @@
+:root {
+  --shimmer-first-color: #CED2DA;
+  --shimmer-second-color: #F1F3F7;
+  --shimmer-third-color: #CED2DA;
+}
+:root .inverted {
+  --shimmer-first-color: #191C23;
+  --shimmer-second-color: #444851;
+  --shimmer-third-color: #191C23;
+}
+:root .dark {
+  --shimmer-first-color: #191C23;
+  --shimmer-second-color: #444851;
+  --shimmer-third-color: #191C23;
+}
+:root .dark .inverted {
+  --shimmer-first-color: #CED2DA;
+  --shimmer-second-color: #F1F3F7;
+  --shimmer-third-color: #CED2DA;
+}
+
+:root {
+  --base-font-feature-settings: 'ss01' on, 'liga' off, 'clig' off;
+}
+
+.four-pay-wrapper {
+  padding: 2px 2px 2px 4px;
+  width: 100%;
+  backdrop-filter: blur(9px);
+}
+.four-pay-wrapper .four-pay {
+  border-radius: 100px;
+  background: linear-gradient(238deg, var(--Alias-Line-Credit, #925DFD) 0.54%, var(--text-icon-on-back-brand-link, #1159FC) 89.58%);
+  width: 28px;
+  height: 28px;
+  justify-content: center;
+  align-items: center;
+}
+.four-pay-wrapper .four-pay .count {
+  text-align: center;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 8px;
+  padding-left: 2px;
+}
+.four-pay-wrapper .four-pay .text {
+  text-align: center;
+  font-feature-settings: "ss01" on, "liga" off, "clig" off;
+  font-size: 8px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 4px;
+}

@@ -1,0 +1,122 @@
+:root {
+  --shimmer-first-color: #CED2DA;
+  --shimmer-second-color: #F1F3F7;
+  --shimmer-third-color: #CED2DA;
+}
+:root .inverted {
+  --shimmer-first-color: #191C23;
+  --shimmer-second-color: #444851;
+  --shimmer-third-color: #191C23;
+}
+:root .dark {
+  --shimmer-first-color: #191C23;
+  --shimmer-second-color: #444851;
+  --shimmer-third-color: #191C23;
+}
+:root .dark .inverted {
+  --shimmer-first-color: #CED2DA;
+  --shimmer-second-color: #F1F3F7;
+  --shimmer-third-color: #CED2DA;
+}
+
+:root {
+  --base-font-feature-settings: 'ss01' on, 'liga' off, 'clig' off;
+}
+
+.ngx-badge {
+  direction: rtl;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 48px;
+  width: -moz-fit-content;
+  width: fit-content;
+  gap: 4px;
+  overflow: hidden;
+}
+.ngx-badge.icon-left {
+  flex-direction: row-reverse;
+}
+
+.ngx-badge-lg {
+  height: 40px;
+  min-width: 40px;
+  padding: 0 8px;
+  font-size: 14px;
+}
+
+.ngx-badge-md {
+  height: 28px;
+  min-width: 28px;
+  padding: 0 8px;
+  font-size: 12px;
+}
+
+.ngx-badge-sm {
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 450;
+  line-height: 18px;
+  width: 33px;
+}
+
+.ngx-badge-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #fff;
+}
+.ngx-badge-icon-lg {
+  width: 20px;
+  height: 20px;
+  font-size: 14px;
+  padding: 0;
+}
+.ngx-badge-icon-md {
+  width: 18px;
+  height: 18px;
+  font-size: 12px;
+  padding: 0;
+}
+.ngx-badge-icon-sm {
+  width: 16px;
+  height: 16px;
+  font-size: 10px;
+  padding: 0;
+}
+
+.ngx-badge-count {
+  padding: 0 9px;
+  min-width: 24px;
+}
+
+.ngx-badge-tiny {
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 450;
+  line-height: 160%;
+  height: 20px;
+  padding: 4px 6px;
+}
+
+.ngx-badge-btnBadge {
+  font-size: 8px;
+  line-height: 12px;
+  padding: 2px 4px;
+}
+
+.onback-shade-90 {
+  background: var(--onback-shade-90);
+}
+
+.steel-shade-30 {
+  background-color: #4F5562;
+}
+
+.steel-shade-95 {
+  background-color: #EAEFF7;
+}
+
+.surface-status-warning {
+  background-color: #FEC003;
+}

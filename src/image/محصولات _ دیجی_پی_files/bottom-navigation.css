@@ -1,0 +1,70 @@
+:root {
+  --shimmer-first-color: #CED2DA;
+  --shimmer-second-color: #F1F3F7;
+  --shimmer-third-color: #CED2DA;
+}
+:root .inverted {
+  --shimmer-first-color: #191C23;
+  --shimmer-second-color: #444851;
+  --shimmer-third-color: #191C23;
+}
+:root .dark {
+  --shimmer-first-color: #191C23;
+  --shimmer-second-color: #444851;
+  --shimmer-third-color: #191C23;
+}
+:root .dark .inverted {
+  --shimmer-first-color: #CED2DA;
+  --shimmer-second-color: #F1F3F7;
+  --shimmer-third-color: #CED2DA;
+}
+
+:root {
+  --base-font-feature-settings: 'ss01' on, 'liga' off, 'clig' off;
+}
+
+.bottom-navigation {
+  box-shadow: 0 6px 20px 2px rgba(223, 225, 229, 0.5019607843), 0 -2px 20px 2px rgba(242, 243, 246, 0.4);
+  width: 100%;
+}
+.bottom-navigation .item {
+  height: 50px;
+  width: 50px;
+}
+.bottom-navigation .active {
+  position: relative;
+}
+.bottom-navigation .active .title-bottom-navigation {
+  color: var(--text-onback-brand);
+}
+.bottom-navigation .active .logo-bottom-navigation {
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent;
+  background: #1159FC;
+}
+.bottom-navigation .active:before {
+  content: "";
+  width: 8px;
+  height: 2px;
+  border-radius: 100px;
+  background: #1159FC;
+  position: absolute;
+  top: 0;
+  right: 41%;
+}
+.bottom-navigation a {
+  position: relative;
+}
+.bottom-navigation .discount {
+  border-radius: 50%;
+  border: 1px solid #FFF;
+  width: 15px;
+  height: 14px;
+  position: absolute;
+  z-index: 1;
+  left: 5px;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
