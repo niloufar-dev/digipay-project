@@ -1,7 +1,7 @@
 @import "tailwindcss";
 @font-face {
     font-family: 'icon';
-    src: url(./icons/icons.woff2);
+    src: url(/icons/icons.woff2);
 }
 .icon {
   font-family: 'icon' !important;
@@ -9,10 +9,11 @@
   font-weight: normal;
   display: flex;
   width: fit-content;
+  
 }
 @font-face {
     font-family: yekan;
-    src: url(./font/yekan-bakh_variable.woff) format("woff");
+    src: url(/font/yekan-bakh_variable.woff) format("woff");
 }
 body{
     font-family:"yekan";
@@ -153,4 +154,5 @@ content: "\f2b0";
 .service-card{
     position:relative;
     overflow:hidden;
+   
 }
