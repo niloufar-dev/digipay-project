@@ -9,7 +9,7 @@
 ---
 
 ## 🌐 لایو دمو
-👉 [مشاهده پروژه](https://niloufar-dev.github.io/digipay-project/src/index.html)
+👉 [مشاهده پروژه](https://niloufar-dev.github.io/Digipay-website/src/index.html)
 
 
 ---
