@@ -2119,7 +2119,7 @@
 }
 @font-face {
   font-family: 'icon';
-  src: url(/icons/icons.woff2);
+  src: url(../icons/icons.woff2);
 }
 .icon {
   font-family: 'icon' !important;
@@ -2130,7 +2130,7 @@
 }
 @font-face {
   font-family: yekan;
-  src: url(/font/yekan-bakh_variable.woff) format("woff");
+  src: url(../font/yekan-bakh_variable.woff) format("woff");
 }
 body {
   font-family: "yekan";
